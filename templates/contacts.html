@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+@media (max-width: 767px) {
+    .web {
+    display:None;
+  }
+}
+.mobile {
+  display:None;
+}
+@media (max-width: 767px) {
+    .mobile {
+    display:inline;
+
+    margin-bottom:100px;
+  }
+}
+ .web {
+    margin-bottom:200px;
+}
+{% endblock styles %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <h2 class="text-center mt-5">Контакти</h2>
+    <div class="col-md-5 mt-5">
+      Ми знаходимось тут: Київська обл., м.Біла Церква, бул. Олександрійський, 105<br>
+Тел.+380983117754<br><br>
+        Ми в соціальних мережах:
+        <div class="row">
+            <div class="col-3 col-md-2">
+                <a href="#"> <img class="rounded-pill border border-light btn btn-outline-warning " src="{% static 'images/tiktok.png' %}" style="height:70%;"></a>
+            </div>
+            <div class="col-3 col-md-2">
+                <a href="#"> <img class="rounded-pill border border-light btn btn-outline-warning " src="{% static 'images/youtube.png' %}" style="height:70%;"></a>
+            </div>
+            <div class="col-3 col-md-2">
+                <a href="#"> <img class="rounded-pill border border-light btn btn-outline-warning " src="{% static 'images/facebook.png' %}" style="height:70%;"></a>
+            </div>
+            <div class="col-3 col-md-2">
+                <a href="#"> <img class="rounded-pill border border-light btn btn-outline-warning " src="{% static 'images/telegram.png' %}" style="height:70%;"></a>
+            </div>
+            <div class="col-3 col-md-2">
+                <a href="#"> <img class="rounded-pill border border-light btn btn-outline-warning " src="{% static 'images/instagram.png' %}" style="height:70%;"></a>
+            </div>
+            <div class="col-3 col-md-2">
+                <a href="#"> <img class="rounded-pill border border-light btn btn-outline-warning " src="{% static 'images/viber.png' %}" style="height:70%;"></a>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-10 col-md-7 mt-5 web">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1082.5958747979703!2d30.09988693352365!3d49.80747368000711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d343262cbea29d%3A0xc840a0bd4a90ab6!2sTravel%20Hub!5e0!3m2!1sru!2sua!4v1682196312025!5m2!1sru!2sua" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="col-10 col-md-7 mt-5 mobile">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1082.5958747979703!2d30.09988693352365!3d49.80747368000711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d343262cbea29d%3A0xc840a0bd4a90ab6!2sTravel%20Hub!5e0!3m2!1sru!2sua!4v1682196312025!5m2!1sru!2sua" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+         </div>
+  </div>
+</div>
+{% endblock content %}

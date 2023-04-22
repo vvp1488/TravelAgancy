@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+.main-baner {
+       height: 260px;
+    }
+@media (max-width: 767px){
+.main-baner {
+       height: 100px;
+    }}
+{% endblock styles %}
+{% block content %}
+<div class="container mt-5" style="font-family: 'Anuphan', sans-serif;">
+    <div class="row">
+        <div class="col offset-md-2">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a style="color: black;" href="{% url 'catalog' %}">Каталог турів</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ tour.name }}</li>
+         </ol>
+    </nav>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-10 mt-5 col-md-5">
+            <h3>{{ tour.name }}</h3>
+            <div class="mt-4">
+                {{ tour.description }}
+            </div><hr>
+            <div class="row">
+                <div class="col col-md-5">
+                    <i class="bi bi-bus-front"></i>  Місце відправки :
+                </div>
+                <div class="col">
+                    {% for place in tour.start_place.all %}
+                        <div class="row">
+                            <i class="bi bi-alexa">{{ place.name }}</i>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div><hr>
+            <div class="row">
+                <div class="col col-md-5">
+                   <i class="bi bi-cash"></i>  У вартість туру входить :
+                </div>
+                <div class="col">
+                    {% for pi in tour.price_include.all %}
+                        <div class="row">
+                            <i class="bi bi-alexa">{{ pi }}</i>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div><hr>
+            <div class="row">
+                <div class="col col-md-5">
+                   <i class="bi bi-cash-coin"></i>  У вартість туру не входить:
+                </div>
+                <div class="col">
+                    {% for pe in tour.price_exclude.all %}
+                        <div class="row">
+                            <i class="bi bi-alexa">{{ pe }}</i>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div><hr>
+
+            <div class="row">
+                <div class="col">
+                    <a href="#" class="btn btn-lg bg-success  text-white">Замовити тур<i class="bi bi-telephone-inbound ms-2"></i></a>
+                </div>
+                  <div class="col">Ціна:  {{ tour.price }} грн*<br>*на святкові дати ціну уточнюйте
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-7 mt-4">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  </div>
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        {% if tour.main_photo %}
+                      <img src="{{ tour.main_photo.url }}" class="d-block w-100" style="max-height:450px;" alt="...">
+                        {% else %}
+                      <img src="{% static 'images/test.png' %}" class="d-block w-100" style="max-height:450px;" alt="...">
+                        {% endif %}
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>{{ tour.name }}</h5>
+                      </div>
+                    </div>
+                      {% for item in tour.tour_objects.all %}
+                    <div class="carousel-item">
+                        {% if item.photo %}
+                        <img src="{{ item.photo.url }}" class="d-block w-100" style="max-height:450px;" alt="...">
+                        {% else %}
+
+                        <img src="{% static 'images/test.png}" class="d-block w-100" alt="...">
+                        {% endif %}
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>{{item.name}}</h5>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+        </div>
+    </div>
+    <div class="row">
+        <p class="text-center mt-4 mb-4 fs-3">Екскурсійні об'єкти туру</p>
+        {% for item in tour.tour_objects.all %}
+        <div class="col-12 col-md-6">
+            <div class="card w-100" style="width: 18rem;">
+                {% if item.photo %}
+                <img src="{{ item.photo.url }}" class="card-img-top" alt="...">
+                {% else %}
+                <img src="{% static 'images/test.png' %}" class="card-img-top" alt="...">
+                {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ item.name }}</h5>
+        <p class="card-text">{{ item.description }}</p>
+      </div>
+    </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row" style="margin-bottom:150px;">
+             {% if tour.plan %}
+        <div class="col-12 mt-5 shadow-lg  mb-5 col-md-6 border bg-secondary bg-opacity-10">
+            <h3 class="text-center mt-4 mb-3">План туру:</h3>
+            <p>{{ tour.plan }}</p>
+            {% endif %}
+        </div>
+            {% if tour.ticket %}
+        <div class="col mt-5 shadow-lg mb-5 col-md-6 border bg-secondary bg-opacity-10" >
+            <h3 class="text-center mt-4 mb-3">Вхідні квитки:</h3>
+            <p>{{ tour.ticket }}</p>
+            {% endif %}
+        </div>
+            {% if tour.food %}
+        <div class="col-12 mt-2 mb-5 shadow-lg  col-md-6 border bg-secondary bg-opacity-10">
+            <h3 class="text-center mt-4 mb-3">Харчування:</h3>
+            <p>{{ tour.food }}</p>
+            {% endif %}
+        </div>
+             {% if tour.notes %}
+        <div class="col mt-2 shadow-lg mb-5 col-md-6 border bg-secondary bg-opacity-10">
+            <h3 class="text-center mt-4 mb-3">Додаткова інформація:</h3>
+            <p>{{ tour.notes }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock content %}
