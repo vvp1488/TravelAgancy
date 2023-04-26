@@ -21,31 +21,23 @@
 }
 {% endblock styles %}
 {% block content %}
-<div class="container">
+<div class="container" style="font-family: 'Libre Baskerville', serif;">
   <div class="row">
     <h2 class="text-center mt-5">Контакти</h2>
-    <div class="col-md-5 mt-5">
-      Ми знаходимось тут: Київська обл., м.Біла Церква, бул. Олександрійський, 105<br>
+    <div class="col-md-5 mt-5 fs-5">
+      Ми знаходимось тут:<br> Київська обл., м.Біла Церква,<br> бул. Олександрійський, 105<br>
 Тел.+380983117754<br><br>
         Ми в соціальних мережах:
         <div class="row">
-            <div class="col-3 col-md-2">
-                <a href="#"> <img class="rounded-pill border border-light btn btn-outline-warning " src="{% static 'images/tiktok.png' %}" style="height:70%;"></a>
+            <div class="col-5 col-md-6">
+               <a href="#" class="text-dark">TikTok<img class="rounded-pill " src="{% static 'images/tiktok.png' %}" style="height:25%;"></a><br>
+               <a href="#" class="text-dark">YouTube<img class="rounded-pill " src="{% static 'images/youtube.png' %}" style="height:25%;"></a>
+                <a href="#" class="text-dark">Facebook <img class="rounded-pill " src="{% static 'images/facebook.png' %}" style="height:25%;"></a>
             </div>
-            <div class="col-3 col-md-2">
-                <a href="#"> <img class="rounded-pill border border-light btn btn-outline-warning " src="{% static 'images/youtube.png' %}" style="height:70%;"></a>
-            </div>
-            <div class="col-3 col-md-2">
-                <a href="#"> <img class="rounded-pill border border-light btn btn-outline-warning " src="{% static 'images/facebook.png' %}" style="height:70%;"></a>
-            </div>
-            <div class="col-3 col-md-2">
-                <a href="#"> <img class="rounded-pill border border-light btn btn-outline-warning " src="{% static 'images/telegram.png' %}" style="height:70%;"></a>
-            </div>
-            <div class="col-3 col-md-2">
-                <a href="#"> <img class="rounded-pill border border-light btn btn-outline-warning " src="{% static 'images/instagram.png' %}" style="height:70%;"></a>
-            </div>
-            <div class="col-3 col-md-2">
-                <a href="#"> <img class="rounded-pill border border-light btn btn-outline-warning " src="{% static 'images/viber.png' %}" style="height:70%;"></a>
+            <div class="col-5 col-md-6">
+                <a href="#" class="text-dark">Telegram<img class="rounded-pill " src="{% static 'images/telegram.png' %}" style="height:25%;"></a>
+                <a href="#" class="text-dark">Instagram <img class="rounded-pill " src="{% static 'images/instagram.png' %}" style="height:25%;"></a><br>
+                 <a href="#" class="text-dark">Viber <img class="rounded-pill " src="{% static 'images/viber.png' %}" style="height:20%;"></a>
             </div>
 
         </div>

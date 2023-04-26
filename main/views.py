@@ -43,3 +43,7 @@ def about_us(request):
 
 def contacts(request):
     return render(request, 'contacts.html', context={})
+
+
+def faq(request):
+    return render(request, 'faq.html', context={})

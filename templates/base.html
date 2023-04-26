@@ -113,11 +113,11 @@ path {
   <div class="main-baner  mt-4" style="font-family: 'Anuphan', sans-serif;"><br>
       <div class="row">
           <div class="col-md-5 col-9 offset-md-2">
-              <a class="navbar-brand  ms-5 logo text-center"  href="{% url 'main_page' %}"><img style="max-width: 100%;" src="{% static 'images/logo7.png' %}" class="shadow-lg rounded-pill" alt="" ></a>
+              <a class="navbar-brand  ms-5 logo text-center "  href="{% url 'main_page' %}"><img style="max-width: 100%;" src="{% static 'images/logo7.png' %}" class="shadow-lg rounded-pill" alt="" ></a>
           </div>
 
               <div class="col-md-3 offset-md-1 text-center catalog1" style="padding-top: 5%; ">
-                      <a class="nav-link fs-4  rounded-pill bg-warning border border-5 p-3" href="{% url 'catalog' %}"><i class="bi bi-search p-2"></i>Каталог автобусних турів</a>
+                      <a class="nav-link fs-4 shadow-lg rounded-pill bg-warning border border-5 p-3" href="{% url 'catalog' %}"><i class="bi bi-search p-2"></i>Каталог автобусних турів</a>
 
               </div>
 
@@ -143,6 +143,9 @@ path {
 
             <li class="nav-item">
             <a class="nav-link" href="{% url 'contacts' %}">Контакти</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'faq' %}">Питання та відповіді</a>
           </li>
         </ul>
         <form class="d-flex mt-3" role="search">
@@ -178,7 +181,7 @@ path {
 <div class="container mt-5 mb-5">
     <div class="row">
         <div class="col-md-10 ">
-              <blockquote>
+              <blockquote class="shadow-lg">
   <svg id="v1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="45" height="45">
   <path d="m 6.7214062,18.043076 -0.064156,11.63789 11.1641508,0.04633 V 17.999241 h -5.388526 c 0.671855,-2.799183 1.074695,-5.755547 5.861699,-6.093347 V 8.3228563 l -5.181289,0.038381 C 9.0408261,9.8242298 6.5750743,15.671151 6.7214062,18.043076 Z"/>
   <path d="m 23.821401,17.999241 -0.06416,11.63789 11.16415,0.04633 V 17.955406 h -5.388525 c 0.671855,-2.799183 1.074695,-5.755547 5.861698,-6.093347 V 8.2790215 l -5.181288,0.038381 C 26.140821,9.780395 23.675069,15.627316 23.821401,17.999241 Z"/>
@@ -203,7 +206,7 @@ path {
 </div>
 <hr>
     <div class="container mt-5 mb-5" >
-        <div class="row justify-content-evenly bg-warning shadow-lg comments" style="margin-bottom: 250px; font-family: 'Libre Baskerville', serif;">
+        <div class="row justify-content-evenly bg-warning shadow-lg comments" style="font-family: 'Libre Baskerville', serif;margin-bottom:300px;">
             <span style=""><h2 class="text-center mt-4 mb-4" >Що говорять наші клієнти</h2></span>
             <div class="col-md-3 col-10" style="max-height:100%;">
                 <img class="img-fluid border border-2 shadow-lg" style="max-height:450px;" src="{% static 'images/coment1.png' %}">
@@ -224,13 +227,16 @@ path {
 
   {% endblock content %}
 
-  <footer class="container-fluid bg-light footer mt-5 fixed-bottom ">
+  <footer class="container-fluid bg-light footer mt-5 fixed-bottom " style="font-family: 'Libre Baskerville', serif; ">
     <div class="container">
       <div class="row">
           <div class="col-4 col-md-2 mt-3 catalog1">
-             <img style="max-width: 100%;" src="{% static 'images/logo7.png' %}" alt="" >
+             <img style="max-width: 100%;" src="{% static 'images/logo7.png' %}" alt="" ><br>
+
           </div>
-          <div class="col offset-md-2 mt-5 text-end catalog1" style="font-family: 'Dongle', sans-serif;"><b>Будьте з нами</b></div>
+
+
+          <div class="col  mt-5 text-end catalog1" ><b>Будьте з нами</b></div>
           <div class="col-2 col-md-1 mt-3 ">
               <a href="#"> <img class="rounded-pill border border-light btn btn-outline-warning " src="{% static 'images/tiktok.png' %}" style="height:70%;"></a>
           </div>
@@ -248,6 +254,18 @@ path {
           </div>
       </div>
 </div>
+      <div class="row bg-secondary" style="--bs-bg-opacity: .2;" >
+          <div class="col col-md-2">
+          <p class="fw-lighter mt-2" >© 2023 «Travel Hub»</p>
+              </div>
+          <div class="col col-md-2 offset-md-6 mt-2 text-end">
+               <a class="text-dark shadow-lg" href="{% url 'faq' %}" ><b>Питання та відповіді</b></a>
+          </div>
+          <div class="col col-md-2 mt-2 ">
+              <a class="text-dark shadow-lg" href="{% url 'contacts' %}"><b> Контакти</b></a>
+          </div>
+      </div>
+
   </footer>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
