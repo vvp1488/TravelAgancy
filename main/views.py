@@ -47,3 +47,7 @@ def contacts(request):
 
 def faq(request):
     return render(request, 'faq.html', context={})
+
+
+def index(request):
+    return render(request, 'index.html', context={})
