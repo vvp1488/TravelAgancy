@@ -11,6 +11,11 @@
   }
 }
 
+@media (max-width: 767px) {
+    .sm-none {
+       display:None;
+  }
+}
 
 body {
   height: 100vh;

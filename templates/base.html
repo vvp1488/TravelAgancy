@@ -41,12 +41,20 @@
   }
 }
 
+.telegram {
+      background-image: url('{% static "images/telegram_photo.jpg" %}');
+      background-size: cover;
+
+    }
 @media (max-width: 767px) {
-    .main-baner {
-    background-size: cover;
-    display: in-line;
+    .telegram {
+       background-size: cover;
+
   }
 }
+
+
+
 {% block styles %}
  blockquote {
   box-sizing: border-box;
@@ -188,7 +196,7 @@ path {
 <div class="container fs-5" style="font-family: 'Libre Baskerville', serif;">
     <div class="row">
         <div class="col text-center">
-            <img class="mt-4 img-thumbnail" style="max-width: 70%;" src="{% static 'images/about_us.jpg' %}">
+            <img class="mt-4" style="max-width: 70%;" src="{% static 'images/about_us.jpg' %}">
         </div>
         <p class="mt-5">
         Турагенція TRAVEL HUB створена для того, щоб кожен українець міг подорожувати безпечно, якісно та цікаво.<br><br>
@@ -236,13 +244,26 @@ path {
     </div>
 </div>
 <hr>
+
     <div class="container mt-5 mb-5" >
         <div class="row">
-
-            <img src="{% static 'images/feedbacks.jpg' %}">
+            <img class="img-fluid" src="{% static 'images/feedbacks.jpg' %}">
         </div>
+    </div>
 
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-10 col-xl-9 telegram">
+                <div class="row sm-none" style="height:400px"></div>
+                <div class="row">
+                    <div class="col offset-xl-7">
+                        <a class="ms-4" href="https://t.me/+W0NcC7HdP3QxMWUy"><img src="{% static 'images/btn1.png' %}"></a>
+                    </div>
+                </div>
+                <div class="row sm-none" style="height:100px;"></div>
+            </div>
 
+        </div>
     </div>
 
   {% endblock content %}
