@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 from django.views.generic import ListView, DetailView
 from .models import Tour, StartPlace, TourObject, PriceInclude, PriceExclude
 from django_filters.views import FilterView
 from .filtersets import TourFilter
 from django.core.paginator import Paginator
+from .forms import OrderForm
 
 
 def main_page(request):
@@ -19,6 +20,7 @@ class TourList(FilterView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['form'] = OrderForm(self.request.GET)
         context['tour_objects'] = TourObject.objects.all()
         context['start_places'] = StartPlace.objects.all()
         context['price_include'] = PriceInclude.objects.all()
@@ -49,5 +51,6 @@ def faq(request):
     return render(request, 'faq.html', context={})
 
 
-def index(request):
-    return render(request, 'index.html', context={})
+def order_view(request):
+    return HttpResponseRedirect('/')
+

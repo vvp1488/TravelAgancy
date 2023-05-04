@@ -131,11 +131,52 @@
         <a href="{{ tour.get_absolute_url }}" class="btn btn-lg bg-info  text-white">Детальніше</a>
     </div>
     <div class="col">
-         <a href="#" class="btn btn-lg bg-success  text-white" >Замовити тур<i class="bi bi-telephone-inbound ms-2"></i></a>
+        <button type="button" class="btn btn-lg bg-success  text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Замовити тур<i class="bi bi-telephone-inbound ms-2"></i>
+        </button>
+        <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel"><img class="img-fluid w-50" src="{% static 'images/logo7.png' %}"></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+          </div>
+          <div class="modal-body">
+            <form action="{% url 'order' %}" method="post">
+                {% csrf_token %}
+              <div class="row mb-3">
+                  <div class="col">
+                      <input type="text" class="form-control form-control-lg" id="InputName" placeholder="Ваше ім'я" aria-describedby="emailHelp">
+                  </div>
+                  <div class="col">
+                      <input type="text" class="form-control form-control-lg" placeholder="Ваше прізвище" id="InputSurname">
+                  </div>
+              </div>
+                <div class="row justify-content-center">
+                    <div class="col-8">
+                        <div class="input-group flex-nowrap">
+                          <span class="input-group-text" id="addon-wrapping"><i class="bi bi-telephone"></i></span>
+                          <input type="text" class="form-control form-control-lg" id="InputPhone" placeholder="Номер телефону" aria-label="Username" aria-describedby="addon-wrapping">
+                        </div>
+                        <p class="text-muted">
+                            По даному номеру телефона наш менеджер з вами сконтактує.
+                        </p>
+                    </div>
+                </div>
+                <div class="row mb-4 justify-content-center">
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-lg bg-success text-white"> Залишити заявку</button>
+                    </div>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
 </div>
-
-
   </div>
 </div>
           </div>

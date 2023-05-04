@@ -80,3 +80,17 @@ class Tour(models.Model):
     def get_absolute_url(self):
         return reverse('detail_tour', kwargs={'pk': self.pk})
 
+
+class Order(models.Model):
+    name = models.CharField(verbose_name="Ім'я", max_length=50, null=True, blank=True)
+    surname = models.CharField(verbose_name='Прізвище', max_length=60, null=True, blank=True)
+    phone = models.CharField(verbose_name='Телефон', max_length=9)
+    tour = models.ForeignKey(Tour, on_delete=models.SET_NULL, related_name='orders', null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Заявка"
+        verbose_name_plural = "Заявки"
+
+    def __str__(self):
+        return f'{self.name} - {self.phone}'
