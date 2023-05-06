@@ -1,6 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block styles %}
+.main-baner {
+    background-image: url('{% static "images/baner_catalog.jpg" %}');
+background-size: cover;
+height:300px;
+
+    }
+
+@media (max-width: 767px){
+.main-baner {
+    background-image: url('{% static "images/baner_catalog.jpg" %}');
+    height:200px;
+    }}
+
 @media (max-width: 767px) {
     .web {
     display:None;
