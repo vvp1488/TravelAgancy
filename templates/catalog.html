@@ -2,12 +2,15 @@
 {% load static %}
 {% block styles %}
 .main-baner {
-       height: 250px;
+    background-image: url('{% static "images/baner_catalog.png" %}');
+
+height:250px;
     }
 
 @media (max-width: 767px){
 .main-baner {
-       height: 100px;
+    background-image: url('{% static "images/baner_catalog.png" %}');
+    height:200px;
     }}
 
 {% endblock styles %}
@@ -126,7 +129,7 @@
       *на святкові дати ціну уточнюйте
       </p>
 
-<div class="row">
+      <div class="row">
     <div class="col-md-5">
         <a href="{{ tour.get_absolute_url }}" class="btn btn-lg bg-info  text-white">Детальніше</a>
     </div>
@@ -148,17 +151,17 @@
                 {% csrf_token %}
               <div class="row mb-3">
                   <div class="col">
-                      <input type="text" class="form-control form-control-lg" id="InputName" placeholder="Ваше ім'я" aria-describedby="emailHelp">
+                      <input type="text" class="form-control form-control-lg" id="InputName" name="name" placeholder="Ваше ім'я" aria-describedby="emailHelp">
                   </div>
                   <div class="col">
-                      <input type="text" class="form-control form-control-lg" placeholder="Ваше прізвище" id="InputSurname">
+                      <input type="text" class="form-control form-control-lg" id="InputSurname" name="surname" placeholder="Ваше прізвище">
                   </div>
               </div>
                 <div class="row justify-content-center">
                     <div class="col-8">
                         <div class="input-group flex-nowrap">
                           <span class="input-group-text" id="addon-wrapping"><i class="bi bi-telephone"></i></span>
-                          <input type="text" class="form-control form-control-lg" id="InputPhone" placeholder="Номер телефону" aria-label="Username" aria-describedby="addon-wrapping">
+                          <input type="text" class="form-control form-control-lg" id="InputPhone" name="phone" placeholder="Номер телефону" aria-label="Username" aria-describedby="addon-wrapping">
                         </div>
                         <p class="text-muted">
                             По даному номеру телефона наш менеджер з вами сконтактує.
@@ -211,7 +214,7 @@
 </div>
 
 {% endblock content %}
-
+</div>
 {% block scripts %}
 
       $( function() {

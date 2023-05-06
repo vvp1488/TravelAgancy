@@ -52,5 +52,11 @@ def faq(request):
 
 
 def order_view(request):
-    return HttpResponseRedirect('/')
-
+    if request.method == 'POST':
+        print('here')
+        name = request.POST.get('name')
+        surname = request.POST.get('surname')
+        phone = request.POST.get('phone')
+        print(phone)
+    print('outhere')
+    return render(request, 'faq.html', context={})
