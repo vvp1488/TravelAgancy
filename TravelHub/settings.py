@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-a!zyv_v38@i^$s3z*_(2$j971w=nf-smkns-g**ut%2ghg6$ww
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    # 'csp.middleware.CSPMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -139,3 +140,10 @@ CKEDITOR_CONFIGS = {
         'width': 800,
     },
 }
+
+# CSP_STYLE_SRC = ("'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net", "https://fonts.googleapis.com", "https://code.jquery.com")
+# CSP_FONT_SRC = ("'self'", "https://cdn.jsdelivr.net", "https://fonts.gstatic.com")
+# CSP_SCRIPT_SRC = ("'self'", "'nonce-testvalue'", "https://code.jquery.com", "https://cdn.jsdelivr.net")
+# CSP_FRAME_SRC = ("'self'", "https://www.google.com/maps/")
+# CSP_IMG_SRC = ("'self'", "https://www.w3.org/", "data:")
+#

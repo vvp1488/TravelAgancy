@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TourObject, Tour, StartPlace, PriceExclude, PriceInclude
+from .models import TourObject, Tour, StartPlace, PriceExclude, PriceInclude, Order
 
 
 
@@ -13,3 +13,4 @@ admin.site.register(TourObject)
 admin.site.register(StartPlace)
 admin.site.register(PriceExclude)
 admin.site.register(PriceInclude)
+admin.site.register(Order)

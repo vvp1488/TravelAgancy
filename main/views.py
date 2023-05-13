@@ -1,10 +1,12 @@
-from django.shortcuts import render, HttpResponseRedirect
+from csp.decorators import csp_exempt
+from django.shortcuts import render, HttpResponseRedirect, redirect
 from django.views.generic import ListView, DetailView
-from .models import Tour, StartPlace, TourObject, PriceInclude, PriceExclude
+from .models import Tour, StartPlace, TourObject, PriceInclude, PriceExclude, Order
 from django_filters.views import FilterView
 from .filtersets import TourFilter
 from django.core.paginator import Paginator
 from .forms import OrderForm
+from django.contrib import messages
 
 
 def main_page(request):
@@ -51,12 +53,17 @@ def faq(request):
     return render(request, 'faq.html', context={})
 
 
-def order_view(request):
+def order_view(request, pk):
     if request.method == 'POST':
-        print('here')
+        tour = Tour.objects.get(pk=pk)
         name = request.POST.get('name')
         surname = request.POST.get('surname')
         phone = request.POST.get('phone')
-        print(phone)
-    print('outhere')
-    return render(request, 'faq.html', context={})
+        new_order = Order.objects.create(name=name, surname=surname, phone=phone, tour=tour)
+        info = request.POST.get('info')
+        if info:
+            new_order.info = info
+            new_order.save()
+        if new_order:
+            messages.success(request, "Ваш запит успішно відправлено. Наш менеджер зв'яжеться з вами найближчим часом")
+    return redirect('catalog')

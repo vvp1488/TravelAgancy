@@ -148,25 +148,30 @@ height:300px;
 
           </div>
           <div class="modal-body">
-            <form action="{% url 'order' %}" method="post">
+            <form action="{% url 'order' tour.pk %}" method="post">
                 {% csrf_token %}
-              <div class="row mb-3">
+              <div class="row justify-content-center mb-3">
                   <div class="col">
-                      <input type="text" class="form-control form-control-lg" id="InputName" name="name" placeholder="Ваше ім'я" aria-describedby="emailHelp">
+                      <input type="text" class="form-control form-control-lg" id="InputName" name="name" placeholder="Ваше ім'я" aria-describedby="emailHelp" required>
                   </div>
                   <div class="col">
-                      <input type="text" class="form-control form-control-lg" id="InputSurname" name="surname" placeholder="Ваше прізвище">
+                      <input type="text" class="form-control form-control-lg" id="InputSurname" name="surname" placeholder="Ваше прізвище" required>
                   </div>
               </div>
                 <div class="row justify-content-center">
                     <div class="col-8">
                         <div class="input-group flex-nowrap">
                           <span class="input-group-text" id="addon-wrapping"><i class="bi bi-telephone"></i></span>
-                          <input type="text" class="form-control form-control-lg" id="InputPhone" name="phone" placeholder="Номер телефону" aria-label="Username" aria-describedby="addon-wrapping">
+                          <input type="text" class="form-control form-control-lg" id="InputPhone" name="phone" placeholder="Номер телефону" aria-label="Username" aria-describedby="addon-wrapping" required>
                         </div>
                         <p class="text-muted">
-                            По даному номеру телефона наш менеджер з вами сконтактує.
+                            По даному номеру телефона наш менеджер з вами зв'яжеться.
                         </p>
+                    </div>
+                </div>
+                <div class="row justify-content-center mt-3 mb-5">
+                    <div class="col-10">
+                        <textarea type="text" style="height: 200px" class="form-control form-control-lg" id="InputInfo" name="info" placeholder="Додаткова інформація чи запитання до дзвінка" ></textarea>
                     </div>
                 </div>
                 <div class="row mb-4 justify-content-center">
@@ -218,16 +223,4 @@ height:300px;
 </div>
 {% block scripts %}
 
-      $( function() {
-        $( "#slider-range" ).slider({
-          range: true,
-          min: 0,
-          max: 5000,
-          values: [ 500, 2600 ],
-          slide: function( event, ui ) {
-            $( "#price_min" ).val(ui.values[ 0 ]) + $( "#price_max" ).val(ui.values[ 1 ]);
-          }
-        });
-
-  });
 {% endblock scripts %}
