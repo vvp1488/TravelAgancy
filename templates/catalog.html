@@ -222,5 +222,18 @@ height:300px;
 {% endblock content %}
 </div>
 {% block scripts %}
+<script>
+       $( function() {
+        $( "#slider-range" ).slider({
+          range: true,
+          min: 0,
+          max: 5000,
+          values: [ 500, 2600 ],
+          slide: function( event, ui ) {
+            $( "#price_min" ).val(ui.values[ 0 ]) + $( "#price_max" ).val(ui.values[ 1 ]);
+          }
+        });
 
+  });
+</script>
 {% endblock scripts %}
