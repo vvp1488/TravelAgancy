@@ -1,4 +1,3 @@
-from csp.decorators import csp_exempt
 from django.shortcuts import render, HttpResponseRedirect, redirect
 from django.views.generic import ListView, DetailView
 from .models import Tour, StartPlace, TourObject, PriceInclude, PriceExclude, Order
