@@ -54,7 +54,7 @@ class PriceExclude(models.Model):
 
 class Tour(models.Model):
 
-    name = models.CharField(verbose_name='Назва туру', max_length=100)
+    name = models.CharField(verbose_name='Назва туру', max_length=100, unique=True)
     price = models.DecimalField(verbose_name='Вартість', max_digits=10, decimal_places=2,  blank=True, null=True)
     description = models.TextField(verbose_name='Короткий опис туру',  blank=True)
     main_photo = models.FileField(verbose_name='Головне фото', blank=True, upload_to='tour_main_photo/')
@@ -73,6 +73,7 @@ class Tour(models.Model):
     class Meta:
         verbose_name = "Тур"
         verbose_name_plural = "Тури"
+        ordering = ['-id']
 
     def __str__(self):
         return self.name
@@ -95,3 +96,9 @@ class Order(models.Model):
 
     def __str__(self):
         return f'{self.name} - {self.surname} : {self.phone}'
+
+
+@receiver(pre_save, sender=Tour)
+def generate_slug(sender, instance, **kwargs):
+    if not instance.url:
+        instance.url = slugify(instance.name)

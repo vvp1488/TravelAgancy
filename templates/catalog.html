@@ -19,9 +19,9 @@ height:300px;
 {% endblock btn_search_tour %}
 {% block content %}
 <div class="container">
-      <div class="row mt-5" style="margin-bottom:200px;">
+      <div class="row justify-content-center mt-5" style="margin-bottom:200px;">
 
-          <div class="col-10 shadow-lg  offset-1 offset-md-0 col-md-3 border pt-3 rounded-4 me-5" style="max-height:600px; font-family: 'Titillium Web', sans-serif; ">
+          <div class="col-11 shadow-lg col-md-9 offset-1 offset-xl-0 col-xl-3 border pt-3 rounded-4 me-5" style="max-height:660px; font-family: 'Titillium Web', sans-serif; ">
               <p class="text-center text-bg-primary bg-info shadow-lg rounded fs-4">Підбір туру <i class="bi bi-bus-front"></i></p>
               <form method="GET">
             <div class="row "><hr>
@@ -104,7 +104,7 @@ height:300px;
     </div>
 
 </form>
-<img style="max-width: 100%;" src="{% static 'images/logo7.png' %}" alt="" ></a>
+<img class="img-fluid" style="max-width: 100%;" src="{% static 'images/logo7.png' %}" alt="" ></a>
       </div>
 
           <div class="col">
@@ -116,7 +116,7 @@ height:300px;
             {% for tour in page_obj %}
 
 
-            <div class="col col-md-6 offset-1 offset-md-0 mt-2 mb-5">
+            <div class="col col-xl-6 offset-1 offset-md-0 mt-2 mb-5">
               <div class="card shadow-lg w-100 h-100 " style="width: 18rem;">
                   {% if tour.main_photo.url is not None %}
                   <a href="{{ tour.get_absolute_url }}"><img src="{{ tour.main_photo.url }}" style="max-height: 240px;" class="card-img-top" alt="..."></a>
@@ -124,68 +124,64 @@ height:300px;
 
   <div class="card-body ">
     <h5 class="card-title">{{ tour.name }}</h5>
-    <p class="card-text overflow-scroll" style="max-height: 100px; min-height:110px;">{{tour.description}}</p>
+    <p class="card-text overflow-scroll" style="max-height: 100px; min-height:110px;">{{tour.description|safe}}</p>
       <hr>
       <p class="card-text lh-base fw-light"><b>Ціна: {{tour.price}} грн*</b><br>
       *на святкові дати ціну уточнюйте
       </p>
 
-      <div class="row">
-    <div class="col-md-5">
-        <a href="{{ tour.get_absolute_url }}" class="btn btn-lg bg-info  text-white">Детальніше</a>
-    </div>
-    <div class="col">
-        <button type="button" class="btn btn-lg bg-success  text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Замовити тур<i class="bi bi-telephone-inbound ms-2"></i>
-        </button>
-        <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel"><img class="img-fluid w-50" src="{% static 'images/logo7.png' %}"></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="btn-group justify-content-center d-flex" role="group" aria-label="Basic example">
+          <a type="button" href="{{ tour.get_absolute_url }}" class="btn bg-info text-white">Детальніше</a>
+            <button type="button" class="btn bg-success  text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Замовити тур<i class="bi bi-telephone-inbound ms-2"></i>
+            </button>
+            <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"><img class="img-fluid w-50" src="{% static 'images/logo7.png' %}"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
-          </div>
-          <div class="modal-body">
-            <form action="{% url 'order' tour.pk %}" method="post">
-                {% csrf_token %}
-              <div class="row justify-content-center mb-3">
-                  <div class="col">
-                      <input type="text" class="form-control form-control-lg" id="InputName" name="name" placeholder="Ваше ім'я" aria-describedby="emailHelp" required>
-                  </div>
-                  <div class="col">
-                      <input type="text" class="form-control form-control-lg" id="InputSurname" name="surname" placeholder="Ваше прізвище" required>
-                  </div>
               </div>
-                <div class="row justify-content-center">
-                    <div class="col-8">
-                        <div class="input-group flex-nowrap">
-                          <span class="input-group-text" id="addon-wrapping"><i class="bi bi-telephone"></i></span>
-                          <input type="text" class="form-control form-control-lg" id="InputPhone" name="phone" placeholder="Номер телефону" aria-label="Username" aria-describedby="addon-wrapping" required>
+              <div class="modal-body">
+                <form action="{% url 'order' tour.pk %}" method="post">
+                    {% csrf_token %}
+                  <div class="row justify-content-center mb-3">
+                      <div class="col">
+                          <input type="text" class="form-control form-control-lg" id="InputName" name="name" placeholder="Ваше ім'я" aria-describedby="emailHelp" required>
+                      </div>
+                      <div class="col">
+                          <input type="text" class="form-control form-control-lg" id="InputSurname" name="surname" placeholder="Ваше прізвище" required>
+                      </div>
+                  </div>
+                    <div class="row justify-content-center">
+                        <div class="col-8">
+                            <div class="input-group flex-nowrap">
+                              <span class="input-group-text" id="addon-wrapping"><i class="bi bi-telephone"></i></span>
+                              <input type="text" class="form-control form-control-lg" id="InputPhone" name="phone" placeholder="Номер телефону" aria-label="Username" aria-describedby="addon-wrapping" required>
+                            </div>
+                            <p class="text-muted">
+                                По даному номеру телефона наш менеджер з вами зв'яжеться.
+                            </p>
                         </div>
-                        <p class="text-muted">
-                            По даному номеру телефона наш менеджер з вами зв'яжеться.
-                        </p>
                     </div>
-                </div>
-                <div class="row justify-content-center mt-3 mb-5">
-                    <div class="col-10">
-                        <textarea type="text" style="height: 200px" class="form-control form-control-lg" id="InputInfo" name="info" placeholder="Додаткова інформація чи запитання до дзвінка" ></textarea>
+                    <div class="row justify-content-center mt-3 mb-5">
+                        <div class="col-10">
+                            <textarea type="text" style="height: 200px" class="form-control form-control-lg" id="InputInfo" name="info" placeholder="Додаткова інформація чи запитання до дзвінка" ></textarea>
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-4 justify-content-center">
-                    <div class="col-6">
-                        <button type="submit" class="btn btn-lg bg-success text-white"> Залишити заявку</button>
+                    <div class="row mb-4 justify-content-center">
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-lg bg-success text-white"> Залишити заявку</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    </div>
-</div>
   </div>
 </div>
           </div>
