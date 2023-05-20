@@ -211,7 +211,7 @@ height:300px;
              {% if tour.notes %}
         <div class="col mt-2 shadow-lg mb-5 col-md-6 border bg-secondary bg-opacity-10">
             <h3 class="text-center mt-4 mb-3">Додаткова інформація:</h3>
-            <p>{{ tour.notes }}</p>
+            <p>{{ tour.notes|safe }}</p>
             {% endif %}
         </div>
     </div>
