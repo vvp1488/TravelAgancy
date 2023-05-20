@@ -29,15 +29,26 @@ body {
 }
 .main-baner {
       background-image: url('{% static "images/main_baner.png" %}');
-      background-size: cover;
+      background-size: 100%;
+      padding: 4em;
        height: 800px;
     }
 
-@media (max-width: 770px) {
+@media (max-width: 1280px) {
     .main-baner {
     background-image: url('{% static "images/short_baner.png" %}');
     background-size: cover;
-    height: 250px;
+    padding: 0em;
+    height: 150px;
+  }
+}
+
+@media (max-width: 1280px) {
+    .main-baner {
+    background-image: url('{% static "images/short_baner.png" %}');
+    background-size: cover;
+    padding: 0em;
+    height: 150px;
   }
 }
 
@@ -138,7 +149,7 @@ path {
 
       {% block btn_search_tour %}
       <br><br><br>
-      <div class="row mt-5 ms-5" >
+      <div class="row ms-5" >
           <div class="col-10 col-xl-4 rounded-pill">
             <a  href="{% url 'catalog' %}"><img class="rounded-pill  img-fluid" src="{% static 'images/btn.png' %}"></a>
       </div>

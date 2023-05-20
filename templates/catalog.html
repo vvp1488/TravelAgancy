@@ -124,15 +124,15 @@ height:300px;
 
   <div class="card-body ">
     <h5 class="card-title">{{ tour.name }}</h5>
-    <p class="card-text overflow-scroll" style="max-height: 100px; min-height:110px;">{{tour.description|safe}}</p>
+    <div class="card-text overflow-scroll" style="max-height: 100px; min-height:110px;">{{tour.description|safe}}</div>
       <hr>
       <p class="card-text lh-base fw-light"><b>Ціна: {{tour.price}} грн*</b><br>
       *на святкові дати ціну уточнюйте
       </p>
 
       <div class="btn-group justify-content-center d-flex" role="group" aria-label="Basic example">
-          <a type="button" href="{{ tour.get_absolute_url }}" class="btn bg-info text-white">Детальніше</a>
-            <button type="button" class="btn bg-success  text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <a type="button" href="{{ tour.get_absolute_url }}" class="btn bg-dark text-white" >Детальніше</a>
+            <button type="button" class="btn bg-warning text-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Замовити тур<i class="bi bi-telephone-inbound ms-2"></i>
             </button>
             <!-- Modal -->
