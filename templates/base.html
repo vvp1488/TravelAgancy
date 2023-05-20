@@ -47,6 +47,12 @@ body {
   }
 }
 
+@media (max-width: 770px) {
+    .btn-tour {
+    display: None;
+  }
+}
+
 .telegram {
       background-image: url('{% static "images/telegram_photo.jpg" %}');
       background-size: cover;
@@ -133,8 +139,8 @@ path {
       {% block btn_search_tour %}
       <br><br><br>
       <div class="row mt-5 ms-5" >
-          <div class="col rounded-pill">
-            <a  href="{% url 'catalog' %}"><img class="rounded-pill h-25" src="{% static 'images/btn.png' %}"></a>
+          <div class="col-10 col-xl-4 rounded-pill">
+            <a  href="{% url 'catalog' %}"><img class="rounded-pill  img-fluid" src="{% static 'images/btn.png' %}"></a>
       </div>
   </div>
     {% endblock btn_search_tour %}
