@@ -63,6 +63,12 @@ body {
   }
 }
 
+@media (max-width: 767px) {
+    .telegram-btn1 {
+    margin-inline-start: 20%;
+  }
+}
+
 photo2 {
     margin-top: 50px;
 }
