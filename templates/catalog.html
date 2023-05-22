@@ -1,22 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block styles %}
-.main-baner {
-    background-image: url('{% static "images/baner_catalog.jpg" %}');
-background-size: cover;
-height:300px;
-
-    }
-
-@media (max-width: 767px){
-.main-baner {
-    background-image: url('{% static "images/baner_catalog.jpg" %}');
-    height:200px;
-    }}
-
-{% endblock styles %}
-{% block btn_search_tour %}
-{% endblock btn_search_tour %}
+       {% block main_baner_img %}
+  <img src="{% static 'images/baner_catalog.jpg' %}" class="img-fluid mt-5" alt="Main Banner">
+        {% endblock main_baner_img %}
 {% block content %}
 <div class="container">
       <div class="row justify-content-center mt-5" style="margin-bottom:200px;">
@@ -173,7 +159,7 @@ height:300px;
                     </div>
                     <div class="row mb-4 justify-content-center">
                         <div class="col-6">
-                            <button type="submit" class="btn btn-lg bg-success text-white"> Залишити заявку</button>
+                            <button type="submit" class="btn btn-lg bg-warning text-dark"> Залишити заявку</button>
                         </div>
                     </div>
                 </form>

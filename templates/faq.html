@@ -1,19 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block styles %}
-.main-baner {
-    background-image: url('{% static "images/baner_catalog.jpg" %}');
-background-size: cover;
-height:300px;
-
-    }
-
-@media (max-width: 767px){
-.main-baner {
-    background-image: url('{% static "images/baner_catalog.jpg" %}');
-    height:200px;
-    }}
-{% endblock styles %}
+  {% block main_baner_img %}
+  <img src="{% static 'images/baner_catalog.jpg' %}" class="img-fluid mt-5" alt="Main Banner">
+        {% endblock main_baner_img %}
 {% block content %}
 <div class="container" style="margin-bottom:300px;">
     <h2 class="text-center mt-5">Найчастіші питання та відповіді:</h2>
