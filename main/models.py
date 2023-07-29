@@ -66,7 +66,6 @@ class Tour(models.Model):
     food = models.TextField(verbose_name='Харчування', blank=True)
     ticket = models.TextField(verbose_name='Вхідні квитки', blank=True)
     notes = models.TextField(verbose_name='Додаткова інформація', blank=True)
-    url = models.SlugField(max_length=160, unique=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -98,7 +97,3 @@ class Order(models.Model):
         return f'{self.name} - {self.surname} : {self.phone}'
 
 
-@receiver(pre_save, sender=Tour)
-def generate_slug(sender, instance, **kwargs):
-    if not instance.url:
-        instance.url = slugify(instance.name)

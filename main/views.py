@@ -6,6 +6,7 @@ from .filtersets import TourFilter
 from django.core.paginator import Paginator
 from .forms import OrderForm
 from django.contrib import messages
+import requests
 
 
 def main_page(request):
@@ -58,11 +59,24 @@ def order_view(request, pk):
         name = request.POST.get('name')
         surname = request.POST.get('surname')
         phone = request.POST.get('phone')
-        new_order = Order.objects.create(name=name, surname=surname, phone=phone, tour=tour)
+        email = request.POST.get('email')
+        order, created = Order.objects.get_or_create(name=name, surname=surname, phone=phone, tour=tour)
         info = request.POST.get('info')
+        data = {
+            "name": f"{name} {surname}",
+            "phone": phone,
+            "data": tour.name,
+        }
         if info:
-            new_order.info = info
-            new_order.save()
-        if new_order:
+            order.info = info
+            order.save()
+            data["comment"] = info
+        if email:
+            data["email"] = email
+        if created:
             messages.success(request, "Ваш запит успішно відправлено. Наш менеджер зв'яжеться з вами найближчим часом")
+            url = 'https://api.allinclusivecrm.com/v1/site/api/create?access-token=8813161920-kfIatq_DjqirNdfT7fPwYq2MyoL1uWa9cDn0X5Eqyk7G9LxSsLG94VCCHhyu6EBaoAokiYlr6bPF2rDj8TCdyD6x6GCR0EBb9I1G'
+            response = requests.post(url, json=data)
+        else:
+            messages.success(request, "Заявка була вже залишена. Наш менеджер зв'яжеться з вами найближчим часом")
     return redirect('catalog')

@@ -21,16 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'asdasdasd'
-#
-with open('file.txt') as f:
-    SECRET_KEY = f.read().strip()
+SECRET_KEY = 'asdasd231s313s!sdasd22365sd'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
-
+CORS_ALLOWED_HEADERS = ['Referer']
 
 # Application definition
 
@@ -41,15 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'main',
     'django_filters',
     'ckeditor',
-    
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django_referrer_policy.middleware.ReferrerPolicyMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     # 'csp.middleware.CSPMiddleware',
@@ -125,9 +126,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
@@ -145,6 +145,8 @@ CKEDITOR_CONFIGS = {
     },
 }
 
+CORS_ALLOW_HEADERS = ['*']
+REFERRER_POLICY = 'strict-origin-when-cross-origin'
 # CSP_STYLE_SRC = ("'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net", "https://fonts.googleapis.com", "https://code.jquery.com")
 # CSP_FONT_SRC = ("'self'", "https://cdn.jsdelivr.net", "https://fonts.gstatic.com")
 # CSP_SCRIPT_SRC = ("'self'", "'nonce-testvalue'", "https://code.jquery.com", "https://cdn.jsdelivr.net")

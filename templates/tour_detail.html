@@ -64,7 +64,7 @@
                         Замовити тур<i class="bi bi-telephone-inbound ms-2"></i>
                     </button>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-dialog modal-fullscreen-md-down modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel"><img class="img-fluid w-50" src="{% static 'images/logo7.png' %}"></h1>
@@ -74,35 +74,43 @@
           <div class="modal-body">
             <form action="{% url 'order' tour.pk %}" method="post">
                 {% csrf_token %}
-              <div class="row justify-content-center mb-3">
-                  <div class="col">
+              <div class="row justify-content-center ">
+                  <div class="col-10 col-xl-5 mb-3">
                       <input type="text" class="form-control form-control-lg" id="InputName" name="name" placeholder="Ваше ім'я" aria-describedby="emailHelp" required>
                   </div>
-                  <div class="col">
+                  <div class="col-10 col-xl-5 mb-3">
                       <input type="text" class="form-control form-control-lg" id="InputSurname" name="surname" placeholder="Ваше прізвище" required>
                   </div>
               </div>
+
                 <div class="row justify-content-center">
-                    <div class="col-8">
+                    <div class="col-10 col-xl-5">
                         <div class="input-group flex-nowrap">
                           <span class="input-group-text" id="addon-wrapping"><i class="bi bi-telephone"></i></span>
-                          <input type="text" class="form-control form-control-lg" id="InputPhone" name="phone" placeholder="Номер телефону" aria-label="Username" aria-describedby="addon-wrapping" required>
+                          <input type="text" class="form-control form-control-lg" id="InputPhone" name="phone" placeholder="Номер телефону" aria-label="Phone" aria-describedby="addon-wrapping" required>
                         </div>
                         <p class="text-muted">
                             По даному номеру телефона наш менеджер з вами зв'яжеться.
                         </p>
                     </div>
+                    <div class="col-10 col-xl-5">
+                        <div class="input-group flex-nowrap">
+                          <span class="input-group-text" id="addon-wrapping"><i class="bi bi-envelope"></i></span>
+                          <input type="text" class="form-control form-control-lg" id="InputPhone" name="email" placeholder="Електронна пошта" aria-label="Email" aria-describedby="addon-wrapping" >
+                        </div>
+                    </div>
                 </div>
+
                 <div class="row justify-content-center mt-3 mb-5">
                     <div class="col-10">
                         <textarea type="text" style="height: 200px" class="form-control form-control-lg" id="InputInfo" name="info" placeholder="Додаткова інформація чи запитання до дзвінка" ></textarea>
                     </div>
                 </div>
-                <div class="row mb-4 justify-content-center">
-                    <div class="col-6">
+
+                    <div class="d-flex justify-content-center mb-4">
                         <button type="submit" class="btn btn-lg bg-warning text-dark"> Залишити заявку</button>
                     </div>
-                </div>
+
             </form>
           </div>
         </div>

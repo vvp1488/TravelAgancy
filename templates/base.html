@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>
-            {% block title %}Travel Hub{% endblock title %}
+            {% block title %}Travel CLUB{% endblock title %}
         </title>
       <link rel="shortcut icon" href="{% static 'images/logo.ico' %}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,10 +33,16 @@ body {
     margin-top: 10%;
   }
 }
-
+@media (max-width: 650px) {
+.about-us {
+    margin-top: 10%;
+  }
+}
  {% endblock styles %}
   </style>
   </head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RSDMYFRFHQ"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-RSDMYFRFHQ'); </script>
+
   <body>
   <nav class="navbar navbar-expand-lg bg-light fixed-top ">
   <div class="container-fluid">
@@ -92,6 +98,8 @@ body {
   </a>
 </div>
 </div>
+
+
 {% if messages %}
     <div class="container mt-3 text-center">
         <div class="row justify-content-center">
@@ -107,13 +115,16 @@ body {
 {% block content %}
 <!-- Button trigger modal -->
 <!-- Modal -->
-<div class="container fs-5">
-    <div class="row">
+    <div class="container mb-5">
+        <div id="itTourWidgetWrapper"></div>
+    </div>
+    <div class="container fs-5">
+    <div class="row ">
         <div class="col text-center">
             <img style="max-width: 70%;" src="{% static 'images/about_us.jpg' %}">
         </div>
         <p class="mt-5">
-        Турагенція TRAVEL HUB створена для того, щоб кожен українець міг подорожувати безпечно, якісно та цікаво.<br><br>
+        Турагенція TRAVEL CLUB створена для того, щоб кожен українець міг подорожувати безпечно, якісно та цікаво.<br><br>
 
 Світ дуже яскравий та різноманітний. Від замків та фортець Львівщини і до сафарі-туру по Танзанії. Ми доведемо вам, що подорожувати це легко.<br><br>
 
@@ -168,7 +179,6 @@ body {
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="10000">
@@ -176,11 +186,7 @@ body {
 
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <img src="{% static 'images/doc1.jpg' %}" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="{% static 'images/doc2.jpg' %}" class="d-block w-100" alt="...">
-
+      <img src="{% static 'images/garanty.jpg' %}" class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
@@ -223,7 +229,7 @@ body {
 </div>
       <div class="row bg-secondary" style="--bs-bg-opacity: .2;" >
           <div class="col">
-          <p class="fw-lighter mt-2" >© 2023 «Travel Hub»</p>
+          <p class="fw-lighter mt-2" >© 2023 «Travel CLUB»</p>
               </div>
           <div class="col mt-2 text-end hide-item">
                <a class="text-dark btn " href="{% url 'faq' %}" ><b>Питання та відповіді</b></a>
@@ -235,7 +241,7 @@ body {
 
   </footer>
 </div>
-<div id="itTourWidgetWrapper"></div><script id="itTourWidgetScriptJsx" tourTab="1" euroTab="1" guidedTab="1" ticketsTab="1" src="https://www.ittour.com.ua/tour_search.jsx?id=621DG3651399227O523647059&ver=3"></script>
+<script id="itTourWidgetScriptJsx" tourTab="1" euroTab="1" guidedTab="1" ticketsTab="1" src="https://www.ittour.com.ua/tour_search.jsx?id=D79211142741G66299574N00&ver=3"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
 </script>
   {% block scripts %}
